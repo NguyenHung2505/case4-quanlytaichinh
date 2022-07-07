@@ -1,6 +1,6 @@
 package com.example.keymodum4.service.impl;
 
-import com.example.keymodum4.model.Role;
+import com.example.keymodum4.model.user.Role;
 import com.example.keymodum4.repository.RoleRepository;
 import com.example.keymodum4.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

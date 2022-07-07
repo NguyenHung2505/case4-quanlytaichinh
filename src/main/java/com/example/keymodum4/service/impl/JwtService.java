@@ -1,7 +1,7 @@
 package com.example.keymodum4.service.impl;
 
 
-import com.example.keymodum4.model.UserPrinciple;
+import com.example.keymodum4.model.user.UserPrinciple;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

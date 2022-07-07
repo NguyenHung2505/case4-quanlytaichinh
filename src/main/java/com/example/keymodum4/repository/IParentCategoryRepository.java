@@ -1,13 +1,9 @@
 package com.example.keymodum4.repository;
 
-
-
-import com.example.keymodum4.model.user.Role;
+import com.example.keymodum4.model.ParentCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
-    Role findByName(String roleName);
+public interface IParentCategoryRepository extends JpaRepository<ParentCategory,Long> {
 }

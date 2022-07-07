@@ -1,8 +1,8 @@
 package com.example.keymodum4.service.impl;
 
 
-import com.example.keymodum4.model.User;
-import com.example.keymodum4.model.UserPrinciple;
+import com.example.keymodum4.model.user.User;
+import com.example.keymodum4.model.user.UserPrinciple;
 import com.example.keymodum4.repository.UserRepository;
 import com.example.keymodum4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.example.keymodum4.controller;
 
 
-import com.example.keymodum4.model.JwtResponse;
-import com.example.keymodum4.model.Role;
-import com.example.keymodum4.model.User;
+import com.example.keymodum4.model.user.JwtResponse;
+import com.example.keymodum4.model.user.Role;
+import com.example.keymodum4.model.user.User;
 import com.example.keymodum4.service.RoleService;
 import com.example.keymodum4.service.UserService;
 import com.example.keymodum4.service.impl.JwtService;

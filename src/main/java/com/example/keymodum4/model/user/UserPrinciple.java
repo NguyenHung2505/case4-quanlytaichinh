@@ -1,4 +1,4 @@
-package com.example.keymodum4.model;
+package com.example.keymodum4.model.user;
 
 
 import org.springframework.security.core.GrantedAuthority;

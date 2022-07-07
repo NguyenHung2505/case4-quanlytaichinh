@@ -1,7 +1,7 @@
 package com.example.keymodum4.service;
 
 
-import com.example.keymodum4.model.Role;
+import com.example.keymodum4.model.user.Role;
 
 public interface RoleService {
     Iterable<Role> findAll();
