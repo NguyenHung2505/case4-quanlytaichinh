@@ -1,6 +1,5 @@
 package com.example.keymodum4.model;
 
-
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;

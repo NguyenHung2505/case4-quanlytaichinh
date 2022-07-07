@@ -1,6 +1,4 @@
 package com.example.keymodum4.service.impl;
-
-
 import com.example.keymodum4.model.User;
 import com.example.keymodum4.model.UserPrinciple;
 import com.example.keymodum4.repository.UserRepository;

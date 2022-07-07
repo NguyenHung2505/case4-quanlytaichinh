@@ -1,7 +1,6 @@
 package com.example.keymodum4.service;
 
 
-
 import com.example.keymodum4.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

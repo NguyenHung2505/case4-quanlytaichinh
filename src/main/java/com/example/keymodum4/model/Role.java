@@ -1,7 +1,5 @@
 package com.example.keymodum4.model;
-
 import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,4 +35,3 @@ public class Role implements Serializable {
         this.name = name;
     }
 }
-
