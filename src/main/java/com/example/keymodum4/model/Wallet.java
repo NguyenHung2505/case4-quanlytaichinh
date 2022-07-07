@@ -23,7 +23,7 @@ public class Wallet {
     private MoneyType moneyType;
 
     @ManyToOne
-    private User user; //thiếu model appuser của Hoa
+    private User user;
 
     public Wallet() {
     }

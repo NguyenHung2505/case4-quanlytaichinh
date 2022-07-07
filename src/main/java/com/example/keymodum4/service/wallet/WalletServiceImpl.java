@@ -33,4 +33,9 @@ public class WalletServiceImpl implements WalletService {
         walletRepository.deleteById(id);
 
     }
+
+    @Override
+    public Iterable<Wallet> findAllByNameContaining(String name) {
+        return walletRepository.findAllByNameContaining(name);
+    }
 }
