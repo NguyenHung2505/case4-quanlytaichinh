@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Controller
 @CrossOrigin("*")
-@RequestMapping("/child-categories")
+@RequestMapping("/categories")
 public class ChildCategoryController {
     @Autowired
     IChildCategoryService childCategoryService;
