@@ -10,6 +10,7 @@ function showAllWallets() {
         }
     })
 }
+showAllWallets();
 function display(data) {
     var content =``;
     for (let i = 0; i < data.length; i++) {
@@ -33,3 +34,21 @@ function getWallet(item) {
 }
 
 
+// hàm xóa
+function showDeleteForm(id) {
+    if (confirm("Do you sure that you want to delete this wallet ???")) {
+        $.ajax({
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem("token")
+            },
+            type: 'DELETE',
+            url: 'http://localhost:8086/wallets/' + id,
+            success: function () {
+               showAllWallets()
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        })
+    }
+}
