@@ -1,9 +1,9 @@
 function singUp() {
-    let userName = document.getElementById("username").value;
+    let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
     let user = {
-        username: userName,
+        username: username,
         password: password,
         confirmPassword: confirmPassword
     }
@@ -14,13 +14,13 @@ function singUp() {
         },
         type: "POST",
         url: "http://localhost:8086/register",
+        dataType: "json",
         data: JSON.stringify(user),
         success: function () {
+            alert("Đăng kí thành công!")
             $('#username').val("");
             $('#password').val("");
             $('#confirmPassword').val("");
-            alert("Đăng kí thành công!")
-
         },
         error: function (error) {
             console.log(error)
