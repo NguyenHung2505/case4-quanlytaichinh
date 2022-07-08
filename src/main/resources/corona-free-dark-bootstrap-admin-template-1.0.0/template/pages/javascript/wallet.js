@@ -26,6 +26,8 @@ function getWallet(item) {
             <td> ${item.moneyAmount}</td>
             <td> ${item.moneyType.name}</td>
             <td> ${item.user.username}</td>
+            <td><button type="button" class="btn btn-outline-success btn-fw">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger btn-fw">Delete</button></td>
         </tr>`
 
 }
