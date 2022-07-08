@@ -1,8 +1,5 @@
 package com.example.keymodum4.model.user;
 
-
-
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;

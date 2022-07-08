@@ -1,6 +1,5 @@
 package com.example.keymodum4.model.user;
 
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
