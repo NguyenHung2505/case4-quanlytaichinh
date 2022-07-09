@@ -28,7 +28,7 @@ function getWallet(item) {
             <td> ${item.moneyAmount}</td>
             <td> ${item.moneyType.name}</td>
             <td> ${item.user.username}</td>
-            <td><button type="button" class="btn btn-outline-success btn-fw">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-success btn-fw" onclick="showEditForm()" >Edit</button></td>
             <td><button type="button" class="btn btn-outline-danger btn-fw" onclick="showDeleteForm(${item.id})">Delete</button></td>
         </tr>`
 
@@ -70,9 +70,8 @@ function showDeleteForm(id) {
 }
 
 function showAddForm() {
-    $("#exampleModal").modal("show");
+    $("#addModal").modal("show");
     showAllMoneyType()
-
 }
 
 //save house
@@ -81,7 +80,7 @@ function saveAdd(){
     let icon=document.getElementById('icon').value;
     let moneyAmount=document.getElementById('moneyAmount').value;
     let moneyType=document.getElementById('moneyType').value;
-    let user=document.getElementById('user').value;
+   let user = parseInt(localStorage.getItem('id'))
     let wallet = {
         name: name,
         icon: icon,
@@ -103,12 +102,33 @@ function saveAdd(){
         url: "http://localhost:8086/wallets",
         data:JSON.stringify(wallet),
         success: function () {
-
+            alert("add new success !")
             showAllWallets()
         }, error: function (error) {
             console.log(error);
         }
     })
+
+
+    function showEditForm() {
+        $("#editModal").modal("show");
+
+    }
+
+    function searchWallet(){
+        let searchName = document.getElementById("search");
+        $.ajax({
+            type: "GET",
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem("token")
+            },
+            url: "http://localhost:8086/wallets/findByName?name=" + searchName.value,
+            success: function (data) {
+                display(data)
+            }
+        });
+    }
+
 
 }
 
