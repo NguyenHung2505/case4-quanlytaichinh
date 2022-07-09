@@ -115,7 +115,7 @@ function saveAdd(){
 
     }
 
-    function searchWallet(){
+    function search123(){
         let searchName = document.getElementById("search");
         $.ajax({
             type: "GET",
