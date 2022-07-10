@@ -28,7 +28,7 @@ function getWallet(item) {
             <td> ${item.moneyAmount}</td>
             <td> ${item.moneyType.name}</td>
             <td> ${item.user.username}</td>
-            <td><button type="button" class="btn btn-outline-success btn-fw" onclick="showEditForm()" >Edit</button></td>
+            <td><button type="button" class="btn btn-outline-success btn-fw" >Edit</button></td>
             <td><button type="button" class="btn btn-outline-danger btn-fw" onclick="showDeleteForm(${item.id})">Delete</button></td>
         </tr>`
 
@@ -110,25 +110,26 @@ function saveAdd(){
     })
 
 
-    function showEditForm() {
-        $("#editModal").modal("show");
-
-    }
-
-    function search123(){
-        let searchName = document.getElementById("search");
-        $.ajax({
-            type: "GET",
-            headers:{
-                Authorization: 'Bearer ' + localStorage.getItem("token")
-            },
-            url: "http://localhost:8086/wallets/findByName?name=" + searchName.value,
-            success: function (data) {
-                display(data)
-            }
-        });
-    }
 
 
+
+}
+function showEditForm() {
+    $("#editModal").modal("show");
+
+}
+
+function searchWallet() {
+    let searchName = document.getElementById("search");
+    $.ajax({
+        type: "GET",
+        headers:{
+            Authorization: 'Bearer ' + localStorage.getItem("token")
+        },
+        url: "http://localhost:8086/wallets/findByName/" + searchName.value,
+        success: function (data) {
+            display(data)
+        }
+    });
 }
 

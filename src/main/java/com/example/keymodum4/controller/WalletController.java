@@ -66,10 +66,10 @@ public class WalletController {
         return new ResponseEntity<>(walletOptional.get(), HttpStatus.NO_CONTENT);
     }
 
-
     @GetMapping("/findByName/{name}")
-    public ResponseEntity<Iterable<Wallet>> findByWalletName(@PathVariable String name){
-        return new ResponseEntity<>(walletServiceImpl.findAllByNameContaining(name), HttpStatus.OK);
-    }
+public ResponseEntity<Iterable<Wallet>> findByWalletName(@PathVariable String name){
+    return new ResponseEntity<>(walletServiceImpl.findAllByNameContaining(name), HttpStatus.OK);
+}
+
 
 }
