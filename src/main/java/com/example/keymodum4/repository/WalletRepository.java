@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface WalletRepository extends PagingAndSortingRepository<Wallet,Long> {
-    Iterable<Wallet> findAllByUser(User user);
+
 
     Iterable<Wallet> findAllByNameContaining(String name);
 
