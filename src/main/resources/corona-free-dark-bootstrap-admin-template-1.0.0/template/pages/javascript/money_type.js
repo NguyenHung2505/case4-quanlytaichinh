@@ -1,4 +1,4 @@
-// let show = document.getElementById("display1");
+
 function showAllMoneyType(){
     $.ajax({
         type: "GET",

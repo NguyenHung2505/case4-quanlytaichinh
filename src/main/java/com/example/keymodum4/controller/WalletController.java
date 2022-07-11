@@ -71,5 +71,4 @@ public ResponseEntity<Iterable<Wallet>> findByWalletName(@PathVariable String na
     return new ResponseEntity<>(walletServiceImpl.findAllByNameContaining(name), HttpStatus.OK);
 }
 
-
 }

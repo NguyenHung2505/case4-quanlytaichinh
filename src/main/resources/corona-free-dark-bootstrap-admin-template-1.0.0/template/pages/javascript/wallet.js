@@ -1,5 +1,6 @@
 let show = document.getElementById("display");
 let addForm = document.getElementById("addForm");
+let editForm = document.getElementById("editForm");
 showAllWallets()
 function showAllWallets() {
     $.ajax({
@@ -34,21 +35,21 @@ function getWallet(item) {
 
 }
 
-function getMoneyType(item){
-    var content =``;
-    for (let i = 0; i < item.length; i++) {
-        content += getTypeName(item[i])
-    }
-    document.getElementById("showType").innerHTML = content;
-
-}
-function getTypeName(item) {
-    return `<tr>
-            <td> ${item.id}</td>
-            <td> ${item.name}</td>
-        </tr>`
-
-}
+// function getMoneyType(item){
+//     var content =``;
+//     for (let i = 0; i < item.length; i++) {
+//         content += getTypeName(item[i])
+//     }
+//     document.getElementById("showType").innerHTML = content;
+//
+// }
+// function getTypeName(item) {
+//     return `<tr>
+//             <td> ${item.id}</td>
+//             <td> ${item.name}</td>
+//         </tr>`
+//
+// }
 
 // hàm xóa
 function showDeleteForm(id) {
@@ -112,7 +113,6 @@ function saveAdd(){
 
 
 
-
 }
 function showEditForm() {
     $("#editModal").modal("show");
@@ -133,3 +133,41 @@ function searchWallet() {
     });
 }
 
+function update() {
+    let name=document.getElementById('name').value;
+    let icon=document.getElementById('icon').value;
+    let moneyAmount=document.getElementById('moneyAmount').value;
+    let moneyType=document.getElementById('moneyType').value;
+    let user = parseInt(localStorage.getItem('id'));
+
+    let wallet = {
+        name: name,
+        icon: icon,
+        moneyAmount: moneyAmount,
+        moneyType: {
+            id: moneyType
+        },
+        user: {
+            id: user
+        }
+    }
+    $.ajax({
+        type: "PUT",
+        headers: {
+            Authorization: 'Bearer ' + token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        url: "http://localhost:8086/wallets/" + id,
+        data: JSON.stringify(wallet),
+        success: function () {
+            modal.modal("hide")
+            $("#editModal").modal("hide")
+            showHouseDetail(id)
+
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    })
+}
