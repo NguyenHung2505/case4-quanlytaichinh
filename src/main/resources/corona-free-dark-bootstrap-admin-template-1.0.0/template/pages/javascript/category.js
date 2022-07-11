@@ -62,13 +62,15 @@ function showDeleteForm(id) {
 //hàm tạo
 function createCategory() {
     let name = document.getElementById("name").value;
-    let type = document.getElementById("type").value;
+    let type = document.getElementById("categoryType").value;
+
     let newCategory = {
         name: name,
         parentCategory: {
             id: type
         }
     };
+
 
     $.ajax({
         headers: {
