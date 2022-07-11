@@ -1,4 +1,5 @@
 let show = document.getElementById("display");
+let addForm = document.getElementById("addForm")
 showAllCategory();
 
 function showAllCategory() {
@@ -22,21 +23,20 @@ function display(data) {
     for (let i = 0; i < data.length; i++) {
         content += getCategory(data[i])
     }
-document.getElementById("display").innerHTML = content;
+    document.getElementById("display").innerHTML = content;
 }
 
 
-function getCategory(categories){
+function getCategory(categories) {
 
-    return  `<tr>
+    return `<tr>
                    <td>${categories.id}</td>
                    <td>${categories.name}</td>
                    <td>${categories.parentCategory.name}</td>
-                   <td><button type="button" class="btn btn-outline-success btn-fw">Add</button></td>
+                   <td><button type="button" class="btn btn-outline-success btn-fw" onclick="showAddForm()">Add</button></td>
                    <td><button type="button" class="btn btn-outline-danger btn-fw" onclick="showDeleteForm(${categories.id})">Delete</button></td>
                    </tr>`
 }
-
 
 
 // hàm xóa
@@ -57,3 +57,49 @@ function showDeleteForm(id) {
         })
     }
 }
+
+
+//hàm tạo
+function createCategory() {
+    let name = document.getElementById("name").value;
+    let type = document.getElementById("type").value;
+    let newCategory = {
+        name: name,
+        parentCategory: {
+            id: type
+        }
+    };
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "http://localhost:8086/categories/",
+        data: JSON.stringify(newCategory),
+        success: function () {
+            alert("Create successfully !")
+            showAllCategory();
+            $('#addModal').modal('hide');
+
+        },
+        errors: function (error) {
+            console.log(error)
+        }
+    })
+}
+
+
+
+
+
+
+function showAddForm() {
+    $("#addModal").modal("show");
+    showAllCategoryType()
+}
+
+
+
