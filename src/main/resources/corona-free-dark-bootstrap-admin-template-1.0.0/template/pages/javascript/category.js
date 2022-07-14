@@ -1,5 +1,7 @@
 let show = document.getElementById("display");
 let addForm = document.getElementById("addForm")
+let editForm = document.getElementById("editForm")
+
 showAllCategory();
 
 function showAllCategory() {
@@ -33,7 +35,7 @@ function getCategory(categories) {
                    <td>${categories.id}</td>
                    <td>${categories.name}</td>
                    <td>${categories.parentCategory.name}</td>
-                   <td><button type="button" class="btn btn-outline-success btn-fw" onclick="showAddForm()">Add</button></td>
+                   <td><button type="button" class="btn btn-outline-success btn-fw" onclick="showEditForm(${categories.id})">Edit</button></td>
                    <td><button type="button" class="btn btn-outline-danger btn-fw" onclick="showDeleteForm(${categories.id})">Delete</button></td>
                    </tr>`
 }
@@ -94,14 +96,77 @@ function createCategory() {
 }
 
 
-
-
-
-
 function showAddForm() {
     $("#addModal").modal("show");
     showAllCategoryType()
 }
+
+
+//hàm tìm kiếm
+
+function searchCategory() {
+    let searchName = document.getElementById("search");
+    $.ajax({
+        type: "GET",
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem("token")
+        },
+        url: "http://localhost:8086/getChildCategory/" + searchName.value,
+        success: function (data) {
+            display(data)
+        }
+    });
+}
+
+
+let editId = 0;
+
+
+//hàm sửa
+function update() {
+    // let id = document.getElementById("id").value;
+
+    document.getElementById('id').value = id;
+    let name1 = document.getElementById("category-name").value;
+    let type1 = document.getElementById("category-type").value;
+
+
+    let newCategory2 = {
+        name: name1,
+        parentCategory: {
+            id: type1
+        }
+    };
+
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "PUT",
+        enctype: 'multipart/form-data',
+        url: "http://localhost:8086/categories/" + id,
+        data: JSON.stringify(newCategory2),
+        success: function () {
+            alert("Edit successfully !")
+            showAllCategory();
+            $('#editModal').modal('hide');
+        },
+        errors: function (error) {
+            console.log(error)
+        }
+    })
+}
+
+function showEditForm(editId) {
+    id = editId;
+    $('#editModal').modal('show');
+
+    showAllCategoryType2()
+
+}
+
 
 
 
